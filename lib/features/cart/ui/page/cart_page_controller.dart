@@ -55,6 +55,14 @@ class CartNotifier extends StateNotifier<Cart> {
     }
   }
 
+  void removeProductFromCart(CartItem product) {
+    List<CartItem> productsList = List.of(state.products);
+
+    productsList.removeWhere((p) => p.name == product.name);
+
+    state = Cart(products: productsList);
+  }
+
   void changeQuantity(CartItem cartItem, int value) {
     final productList = List.of(state.products);
     if (cartItem is CoffeeCartItem) {
