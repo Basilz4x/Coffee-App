@@ -95,10 +95,17 @@ class CoffeeBagDesign extends ConsumerWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Icon(
-              Icons.close_rounded,
-              size: 32,
-              color: AppColor.iconsColor,
+            GestureDetector(
+              onTap: () {
+                ref
+                    .read(cartNotifierProvider.notifier)
+                    .removeProductFromCart(coffeeBag);
+              },
+              child: Icon(
+                Icons.close_rounded,
+                size: 32,
+                color: AppColor.iconsColor,
+              ),
             ),
             const Spacer(),
             Text(
